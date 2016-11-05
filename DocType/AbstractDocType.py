@@ -28,20 +28,3 @@ class abstractDocType:
 		Abstract
 		"""
 		pass
-
-
-
-	def index(self):
-		"""
-		Computes the indexed file
-		Needs to have already extract the contents
-		Abstract
-		"""
-		pass
-
-	def save(self, indexDirectory):
-		"""
-		Saves the index of the document at the given indexDirectory
-		Abstract
-		"""
-		pass

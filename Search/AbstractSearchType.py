@@ -7,7 +7,7 @@
 
 class abstractSearchType:
 	"""
-	Search through a certain type of index with a specific computing method
+	Searchs through a certain type of index with a specific computing method
 	Abstract class
 	"""
 	def __init__(self, query, reverseIndex):

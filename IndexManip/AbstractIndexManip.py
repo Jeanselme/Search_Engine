@@ -8,19 +8,20 @@
 class abstractIndexManip:
 	"""
 	Manipulates the index
+	Goal is to never have all the indexes in memory, it is wht pointers are used
 	Abstract class
 	"""
 
 	def __init__(self, fileName):
 		"""
-		Abstract
+		Saves the fileName and opens a pointer on the beginning of the file
 		"""
 		# Signature -> Distinctive signature in order to check the format
 		self.signature = ""
 		# Index file name
 		self.fileName = fileName
 		# Pointer on the file
-		self.ptr = open(index, "r")
+		self.ptr = open(fileName, "r")
 		# Current read value
 		self.currentValue = ""
 
