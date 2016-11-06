@@ -13,4 +13,4 @@ import SearchFactory as sfac
 import IndexationFactory as ifac
 
 if __name__ == '__main__':
-	pass
+	ifac.indexationFactory(["Sources/Texts/AliceChapter1.txt", "Sources/Texts/AliceChapter2.md"])
