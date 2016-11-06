@@ -8,22 +8,29 @@
 class abstractIndexManip:
 	"""
 	Manipulates the index
-	Goal is to never have all the indexes in memory, it is wht pointers are used
+	Goal is to never have all the indexes in memory, it is why pointers are used
+	for reading
 	Abstract class
 	"""
 
-	def __init__(self, fileName):
+	def __init__(self):
 		"""
 		Saves the fileName and opens a pointer on the beginning of the file
 		"""
 		# Signature -> Distinctive signature in order to check the format
-		self.signature = ""
-		# Index file name
-		self.fileName = fileName
+		self.signature = ".index"
+
+		## Reading
 		# Pointer on the file
-		self.ptr = open(fileName, "r")
+		self.ptr = None
 		# Current read value
-		self.currentValue = ""
+		self.currentValue = None
+
+		## Writing
+		# Name of the file
+		self.source = None
+		# Result of the index computation (create)
+		self.index = None
 
 	def create(self, docTypeFile):
 		"""
@@ -32,6 +39,16 @@ class abstractIndexManip:
 		extraction
 		Abstract
 		"""
+		pass
+
+	def readStart(self, fileName):
+		"""
+		Opens the file and initializes pointer in order to read it
+		"""
+		if (self.signature == fileName[-len(self.signature):]):
+			self.ptr = open(fileName, 'r')
+		else :
+			print("Index is not in the good format")
 
 	def readContinue(self):
 		"""
@@ -40,10 +57,9 @@ class abstractIndexManip:
 		"""
 		pass
 
-	@classmethod
-	def save(cls, index, indexDirectory):
+	def save(self):
 		"""
-		Saves the index at the given indexDirectory
+		Saves the index
 		Abstract
 		"""
 		pass

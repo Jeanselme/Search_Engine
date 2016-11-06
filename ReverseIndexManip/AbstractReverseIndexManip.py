@@ -17,7 +17,7 @@ class abstractReverseIndexManip:
 		Abstract
 		"""
 		# Signature -> Distinctive signature in order to check the format
-		self.signature = ""
+		self.signature = None
 		# Index file name
 		self.reverseIndex = open(fileName, 'rw')
 		# Current read value
