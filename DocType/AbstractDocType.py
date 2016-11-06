@@ -5,6 +5,8 @@
 	vincent.jeanselme@gmail.com
 """
 
+import os
+
 class abstractDocType:
 	"""
 	Different type of documents : image, text
@@ -16,13 +18,8 @@ class abstractDocType:
 		Creates the structure for the file
 		"""
 		# Name of the original file
-		slash = fileName.rfind('/')
-		if slash != -1 :
-			self.path = fileName[:slash+1]
-			self.fileName = fileName[slash+1:]
-		else:
-			self.path = ""
-			self.fileName = fileName
+		self.path = os.path.dirname(fileName)
+		self.fileName = os.path.basename(fileName)
 		# Content of the file
 		self.content = None
 
