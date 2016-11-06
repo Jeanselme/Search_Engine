@@ -16,7 +16,7 @@ class textType(abstractDocType):
 		"""
 		Extracts all content of the doc
 		"""
-		with open(self.path + self.fileName, 'r') as text:
+		with open(self.path, 'r') as text:
 			self.content = text.read()
 
 		return self.content
