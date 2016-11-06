@@ -15,7 +15,7 @@ class abstractIndexManip:
 
 	def __init__(self):
 		"""
-		Saves the fileName and opens a pointer on the beginning of the file
+		Creates all the different variables which are used for reading and witting
 		"""
 		# Signature -> Distinctive signature in order to check the format
 		self.signature = ".index"

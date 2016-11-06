@@ -6,7 +6,7 @@ SCRIPT_TESTS = $(wildcard ./Tests/Script/**/[^__]*.sh)
 unittests:
 	for unit_test in ${UNIT_TESTS} ; do \
 		echo "==> Testing $$unit_test" ;\
-		$(PYTHON) -m unittest $$unit_test ;\
+		$(PYTHON) $$unit_test ;\
 	done
 
 scripttests:
