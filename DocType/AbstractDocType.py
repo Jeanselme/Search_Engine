@@ -16,11 +16,15 @@ class abstractDocType:
 		Creates the structure for the file
 		"""
 		# Name of the original file
-		self.fileName = fileName
+		slash = fileName.rfind('/')
+		if slash != -1 :
+			self.path = fileName[:slash+1]
+			self.fileName = fileName[slash+1:]
+		else:
+			self.path = ""
+			self.fileName = fileName
 		# Content of the file
-		self.content = ""
-		# Result of the indexation
-		self.indexRes = {}
+		self.content = None
 
 	def readContent(self):
 		"""
