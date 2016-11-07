@@ -31,6 +31,8 @@ class abstractIndexManip:
 		self.source = None
 		# Result of the index computation (create)
 		self.index = None
+		# Save Path
+		self.savePath = None
 
 	def create(self, docTypeFile):
 		"""
@@ -44,9 +46,11 @@ class abstractIndexManip:
 	def readStart(self, fileName):
 		"""
 		Opens the file and initializes pointer in order to read it
+		And reads the first entrance
 		"""
 		if (self.signature == fileName[-len(self.signature):]):
 			self.ptr = open(fileName, 'r')
+			return self.readContinue()
 		else :
 			print("Index is not in the good format")
 
