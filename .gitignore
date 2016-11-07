@@ -1,2 +1,3 @@
 **/__pycache__/
 Indexes/*.index
+ReverseIndexes/*.index
