@@ -7,6 +7,7 @@
 
 from IndexManip.AbstractIndexManip import abstractIndexManip
 import Utils.WordProcessing as wp
+import re
 
 class textIndexManip(abstractIndexManip):
 	"""
@@ -38,9 +39,14 @@ class textIndexManip(abstractIndexManip):
 	def readContinue(self):
 		"""
 		Reads and returns the next enter in the index (key, value)
-		Abstract
 		"""
-		pass
+		try :
+			line = re.match(r"(?P<word>\w+):(?P<occurence>\d+)", self.ptr.readline())
+			self.currentValue = [line.group("word"), line.group("occurence")]
+		except Exception :
+			self.currentValue = None
+
+		return self.currentValue
 
 
 	def save(self):
@@ -48,7 +54,10 @@ class textIndexManip(abstractIndexManip):
 		Saves the index
 		Word:Occurences
 		"""
-		with open("Indexes/" + self.source + self.signature, 'w') as dest:
+		self.savePath = "Indexes/" + self.source + self.signature
+		with open(self.savePath, 'w') as dest:
 			for word, number in sorted(self.index.items()):
 				indexFormat = "{}:{}\n".format(word, number)
 				dest.write(indexFormat)
+		# Clear memory
+		self.index = None
