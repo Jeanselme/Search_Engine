@@ -51,7 +51,7 @@ class abstractIndexManip:
 		if (self.signature == fileName[-len(self.signature):]):
 			self.ptr = open(fileName, 'r')
 			return self.readContinue()
-		else :
+		else:
 			print("Index is not in the good format")
 
 	def readContinue(self):

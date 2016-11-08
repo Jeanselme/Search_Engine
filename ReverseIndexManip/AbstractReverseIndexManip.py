@@ -14,7 +14,7 @@ class abstractReverseIndexManip:
 	def __init__(self, fileName, read = False):
 		"""
 		Creates, extracts content, indexes and saves result
-		If read is for read uses otherwise it is for write
+		If read is True, it is for read uses otherwise it is for write
 		Abstract
 		"""
 		# Signature -> Distinctive signature in order to check the format
@@ -37,16 +37,16 @@ class abstractReverseIndexManip:
 	def selectKey(self):
 		"""
 		Selects the first key to put and returns docs and values
+		Needs to have a non None key in the currentValue of the different indexes
 		Private
 		"""
 		resKey = ''
 		resDocuments = []
 		resValues = []
 		for index, i in zip(self.indexes, range(len(self.indexes))):
-			# There is a key which is not null due to while condition
 			if index.currentValue != None:
 				key, value = index.currentValue[0], index.currentValue[1]
-				if resKey == '' or self.compare(resKey,key) :
+				if resKey == '' or self.compare(resKey,key):
 					resKey = key
 					resDocuments = [i]
 					resValues = [value]

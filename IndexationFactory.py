@@ -27,7 +27,7 @@ class indexationFactory:
 		# the corresponding reverseIndexes
 		for fileName in fileNames:
 			dot = fileName.rfind('.')
-			if fileName[dot:] in {".txt", ".md"} :
+			if fileName[dot:] in {".txt", ".md"}:
 				tim = textIndexManip()
 				text = textType(fileName)
 				tim.create(text)

@@ -36,10 +36,10 @@ class textIndexManip(abstractIndexManip):
 		"""
 		Reads and returns the next enter in the index (key, value)
 		"""
-		try :
+		try:
 			line = re.match(r"(?P<word>\w+):(?P<occurence>\d+)", self.ptr.readline())
 			self.currentValue = [line.group("word"), line.group("occurence")]
-		except Exception :
+		except Exception:
 			self.currentValue = None
 
 		return self.currentValue
