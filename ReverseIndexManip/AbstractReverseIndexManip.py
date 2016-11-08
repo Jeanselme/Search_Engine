@@ -46,7 +46,6 @@ class abstractReverseIndexManip:
 			# There is a key which is not null due to while condition
 			if index.currentValue != None:
 				key, value = index.currentValue[0], index.currentValue[1]
-				print(key, value)
 				if resKey == '' or self.compare(resKey,key) :
 					resKey = key
 					resDocuments = [i]
@@ -64,6 +63,7 @@ class abstractReverseIndexManip:
 		Creates the reverse index by parcouring and comparing the different
 		indexes
 		Warning : indexesFile should be compatible with the object
+		This function is totally generic and should not be rewritten
 		"""
 		# Initialize all the new index manipulator
 		for indexManip in indexesFileManip:
@@ -115,6 +115,5 @@ class abstractReverseIndexManip:
 	def merge(cls, indexesList, indexDestinationDirectory):
 		"""
 		Merges two Reverse indexes
-		Abstract
 		"""
 		pass
