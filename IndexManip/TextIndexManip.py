@@ -8,6 +8,7 @@
 from IndexManip.AbstractIndexManip import abstractIndexManip
 import Utils.WordProcessing as wp
 import re
+from collections import Counter
 
 class textIndexManip(abstractIndexManip):
 	"""
@@ -27,12 +28,7 @@ class textIndexManip(abstractIndexManip):
 		words = docTypeFile.readContent()
 		words = wp.extractWords(words)
 		words = wp.stemming(words)
-		self.index = {}
-		for word in words:
-			try:
-				self.index[word] += 1
-			except Exception as e:
-				self.index[word] = 1
+		self.index = Counter(words)
 		return self.index
 
 
