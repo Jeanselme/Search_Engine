@@ -7,6 +7,7 @@
 
 from DocType.TextType import textType
 from IndexManip.TextIndexManip import textIndexManip
+from ReverseIndexManip.TextReverseIndexManip import textReverseIndexManip
 
 class indexationFactory:
 	"""
@@ -20,15 +21,19 @@ class indexationFactory:
 		If force is true, the reindexation is computed
 		"""
 		# Init all the different index
-		tim = textIndexManip()
+		tims = []
 
 		# Associates the good type of dataStructure and indexes before computing
 		# the corresponding reverseIndexes
 		for fileName in fileNames:
 			dot = fileName.rfind('.')
-			if fileName[dot:] in {".txt", ".md"} :
+			if fileName[dot:] in {".txt", ".md"}:
+				tim = textIndexManip()
 				text = textType(fileName)
 				tim.create(text)
 				tim.save()
+				tims.append(tim)
 			else:
 				print("Error : Unknown format of " + fileName)
+
+		textReverseIndexManip("ReverseIndexes/text.reverse.index").create(tims)

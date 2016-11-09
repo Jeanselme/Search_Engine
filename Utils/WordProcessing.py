@@ -12,11 +12,11 @@ def extractWords(text):
 	Extracts words of a text and suppress ponctuation
 	"""
 	res = []
-	for word in text.split() :
+	for word in text.split():
 		newWord = ""
-		for letter in word.lower() :
+		for letter in word.lower():
 			# Adds only letter
-			if letter in "abcdefghijklmnopqrstuvwxyz" :
+			if letter in "abcdefghijklmnopqrstuvwxyz":
 				newWord += letter
 			# If there is a special character, adds the word and creates a new one
 			elif newWord != "":
