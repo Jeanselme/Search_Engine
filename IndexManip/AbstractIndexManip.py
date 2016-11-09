@@ -5,65 +5,77 @@
 	vincent.jeanselme@gmail.com
 """
 
-class abstractIndexManip:
+import os
+
+class abstractIndexReader:
 	"""
-	Manipulates the index
+	Reads the index
 	Goal is to never have all the indexes in memory, it is why pointers are used
-	for reading
 	Abstract class
 	"""
 
-	def __init__(self):
+	def __init__(self, fileName):
+		"""
+		Creates all the different variables which are used for reading
+		Opens the file and initializes pointer in order to read it
+		"""
+		## Reading
+		# Pointer on the file
+		self.ptr = open(fileName, 'r')
+		# Current read value
+		self.currentValue = None
+		# Name of the file
+		# TODO : Conserve this kind of information in a nother .info file
+		self.source = os.path.basename(fileName)
+
+		# To have a non empty currentValue
+		self.readEntry()
+
+	def readEntry(self):
+		"""
+		Reads and returns the next entry in the index (key, value)
+		Abstract
+		"""
+		pass
+
+
+class abstractIndexWriter:
+	"""
+	Writes the index
+	Goal is to never have all the indexes in memory, it is why the index is destroyed
+	at the end
+	Abstract class
+	"""
+
+	def __init__(self,docTypeFile):
 		"""
 		Creates all the different variables which are used for reading and witting
 		"""
-		# Signature -> Distinctive signature in order to check the format
-		self.signature = ".index"
-
-		## Reading
-		# Pointer on the file
-		self.ptr = None
-		# Current read value
-		self.currentValue = None
-
-		## Writing
-		# Name of the file
-		self.source = None
+		# Origin file
+		self.source = docTypeFile
 		# Result of the index computation (create)
 		self.index = None
 		# Save Path
 		self.savePath = None
+		# Creates the index
+		self.create()
+		# Saves index
+		self.save()
 
-	def create(self, docTypeFile):
+	def create(self):
 		"""
 		Creates the index after extracting the data of the given file
 		Warning docTypeFile has to be adaptated to the current information
 		extraction
 		Abstract
-		"""
-		pass
-
-	def readStart(self, fileName):
-		"""
-		Opens the file and initializes pointer in order to read it
-		And reads the first entrance
-		"""
-		if (self.signature == fileName[-len(self.signature):]):
-			self.ptr = open(fileName, 'r')
-			return self.readContinue()
-		else:
-			print("Index is not in the good format")
-
-	def readContinue(self):
-		"""
-		Reads and returns the next enter in the index (key, value)
-		Abstract
+		Private
 		"""
 		pass
 
 	def save(self):
 		"""
-		Saves the index
+		Saves the index and destroys the current index !
 		Abstract
+		Private
 		"""
 		pass
