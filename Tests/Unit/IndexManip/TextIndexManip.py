@@ -25,7 +25,6 @@ class TestWordProcessing(unittest.TestCase):
 		text = textType('Tests/Sources/Texts/test1.txt')
 		tiw = textIndexWriter(text)
 		tir = textIndexReader('Indexes/test1.txt.text.index')
-		print(tir.source)
 		assert(tir.source == 'test1.txt.text.index')
 		assert(tir.currentValue == ['plur','4'])
 		assert(tir.readEntry() == ['potato','3'])
