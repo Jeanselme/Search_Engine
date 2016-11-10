@@ -49,7 +49,7 @@ class abstractIndexWriter:
 
 	def __init__(self,docTypeFile):
 		"""
-		Creates all the different variables which are used for reading and witting
+		Creates all the different variables which are used for writting in the file
 		"""
 		# Origin file
 		self.source = docTypeFile

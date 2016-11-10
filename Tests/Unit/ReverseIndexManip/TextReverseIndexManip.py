@@ -37,7 +37,6 @@ class TestTextReverseIndexManip(unittest.TestCase):
 		assert(trir.readEntry() == ('plur', [0], [4]))
 		assert(trir.readEntry() == ('potato', [0], [3]))
 		assert(trir.readEntry() == (None, None, None))
-		print(trir.correspondingFile(0))
 		assert(trir.correspondingFile(0) == "test1.txt.text.index")
 		self.ReverseIndexDeletion()
 

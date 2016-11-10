@@ -30,7 +30,7 @@ class textSearch(abstractSearchType):
 
 	def computeResult(self):
 		"""
-		Returns the result of the comparsion
+		Returns the text with the most common words
 		"""
 		words = wp.extractWords(self.query)
 		words = wp.stemming(words)

@@ -35,7 +35,7 @@ class textIndexWriter(abstractIndexWriter):
 	"""
 	def create(self):
 		"""
-		Computes the index of the given text and return it as a dictionary of words
+		Computes the index of the given text and returns it as a dictionary of words
 		and frequency
 		"""
 		words = self.source.readContent()

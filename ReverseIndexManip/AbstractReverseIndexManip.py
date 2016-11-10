@@ -124,7 +124,7 @@ class abstractReverseIndexWriter:
 
 	def write(self, key, documentList, valueList):
 		"""
-		Writes in the document the key and associated document and value
+		Writes in the document the key and associated documents and values
 		Private
 		Abstract
 		"""
