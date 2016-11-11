@@ -21,7 +21,8 @@ class abstractSearchType:
 
 	def computeResult(self):
 		"""
-		Returns the result of the comparsion
+		Returns the result of the comparison
+		Do not forget to close the reverseIndex
 		Abstract
 		"""
 		pass

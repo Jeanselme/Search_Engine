@@ -5,11 +5,10 @@
 	vincent.jeanselme@gmail.com
 """
 
-import sys, os
+import sys, os, unittest
 # Needs to be execute from the project source
 sys.path.append(os.getcwd())
 
-import unittest
 from Utils.WordProcessing import *
 
 class TestWordProcessing(unittest.TestCase):

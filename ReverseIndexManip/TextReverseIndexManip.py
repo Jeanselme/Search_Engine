@@ -5,12 +5,39 @@
 	vincent.jeanselme@gmail.com
 """
 
-from ReverseIndexManip.AbstractReverseIndexManip import abstractReverseIndexManip
-from IndexManip.TextIndexManip import textIndexManip
+import re
+from ReverseIndexManip.AbstractReverseIndexManip import abstractReverseIndexWriter, abstractReverseIndexReader
 
-class textReverseIndexManip(abstractReverseIndexManip):
+class textReverseIndexReader(abstractReverseIndexReader):
 	"""
-	Creates and manipulates reverseindex from indexes
+	Reads reverseindex for indexes .text.index
+	"""
+
+	def readEntry(self):
+		"""
+		Reads and returns the next entry in the Reverseindex (key, documentList, valueList)
+		"""
+		line = self.reverseIndex.readline()
+
+		if line != '':
+			line = re.match(r"(?P<word>\w+):(?P<docValue>\(\d+,\d+\)+)", line)
+			word = line.group("word")
+			docList = []
+			valueList = []
+			line = line.group("docValue")
+			while line != '':
+				line = re.match(r"\((?P<doc>\d+),(?P<value>\d+)\)(?P<docValue>(\(\d+,\d+\))*)", line)
+				docList.append(int(line.group("doc")))
+				valueList.append(int(line.group("value")))
+				line = line.group("docValue")
+			return word, docList, valueList
+		else:
+			return None, None, None
+
+
+class textReverseIndexWriter(abstractReverseIndexWriter):
+	"""
+	Writes reverseindex for indexes .text.index
 	"""
 
 	def write(self, key, documentList, valueList):
@@ -23,11 +50,3 @@ class textReverseIndexManip(abstractReverseIndexManip):
 			revIndFor = "({},{})".format(doc, val)
 			self.reverseIndex.write(revIndFor)
 		self.reverseIndex.write('\n')
-
-
-	def read(self):
-		"""
-		Reads and returns the next enter in the index (key, value)
-		Abstract
-		"""
-		pass
