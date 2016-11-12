@@ -1,3 +1,7 @@
 **/__pycache__/
+.idea
 Indexes/*.index
 ReverseIndexes/*.index
+Indexes/*.info
+ReverseIndexes/*.info
+*.pyc

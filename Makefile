@@ -1,6 +1,6 @@
 export PYTHON = python3.5
 
-UNIT_TESTS = $(wildcard ./Tests/Unit/**/[^__]*.py)
+UNIT_TESTS = $(wildcard ./Tests/Unit/**/[^__]*.py ./Tests/Unit/[^__]*.py)
 SCRIPT_TESTS = $(wildcard ./Tests/Script/**/[^__]*.sh)
 
 unittests:
