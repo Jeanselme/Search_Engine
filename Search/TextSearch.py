@@ -16,7 +16,7 @@ class firstTextResult(abstractResult):
 	"""
 
 	def display(self):
-		if len(res) != 0:
+		if len(self.res) != 0:
 			print(self.query + " has the words in common with " + self.res[0])
 		else:
 			print("No match in the current index")
@@ -47,8 +47,6 @@ class textSearch(abstractSearchType):
 			if word == researchedWord:
 				possibleDocs += docFiles
 
-		res = None
-		if len(possibleDocs) != 0:
-			res = max(set(possibleDocs),key=possibleDocs.count)
+		possibleDocs = sorted(set(possibleDocs),key=possibleDocs.count, reverse=True)
 
-		return firstTextResult(self.query, res)
+		return firstTextResult(self.query, possibleDocs)

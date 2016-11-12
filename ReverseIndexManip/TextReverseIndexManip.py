@@ -20,13 +20,13 @@ class textReverseIndexReader(abstractReverseIndexReader):
 		line = self.reverseIndex.readline()
 
 		if line != '':
-			line = re.match(r"(?P<word>\w+):(?P<docValue>\(\d+,\d+\)+)", line)
+			line = re.match(r"(?P<word>\w+):(?P<docValue>.*)", line)
 			word = line.group("word")
 			docList = []
 			valueList = []
 			line = line.group("docValue")
 			while line != '':
-				line = re.match(r"\((?P<doc>\d+),(?P<value>\d+)\)(?P<docValue>(\(\d+,\d+\))*)", line)
+				line = re.match(r"\((?P<doc>\d+),(?P<value>\d+)\)(?P<docValue>.*)", line)
 				docList.append(int(line.group("doc")))
 				valueList.append(int(line.group("value")))
 				line = line.group("docValue")
