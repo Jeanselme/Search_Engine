@@ -16,6 +16,8 @@ import IndexationFactory
 class CheckValidPath(argparse.Action):
     """
         Checks if each document provided is a valid path for a file
+        Inspired from https://docs.python.org/3/library/argparse.html#action
+        the FooAction class especially (end of the section)
     """
     def __call__(self, parser, namespace, values, option_string=None):
 
@@ -26,6 +28,7 @@ class CheckValidPath(argparse.Action):
             else:
                 print("Unknown path: {}".format(document_path))
 
+        # settings valid_documents in the namespace
         setattr(namespace, self.dest, valid_documents)
 
 
@@ -33,8 +36,8 @@ def create_parser():
     """
 
     :return: Parser for the indexation engine.
-                Look for documents and keep only the valid ones (file exists)
-                Look for optional attribute '--force'
+                Looks for documents and keeps only the valid ones (file exists)
+                Looks for optional attribute '--force'
     """
     p = argparse.ArgumentParser(description='Index the given files. All files provided will be available '
                                 'for research purpose after the process')
@@ -43,7 +46,7 @@ def create_parser():
                    const=True,
                    default=False,
                    help='If set, delete the indexation before computing. All previous documents added would be '
-                   'remove from the engine !')
+                   'removed from the engine !')
 
     p.add_argument('documents', nargs='+', action=CheckValidPath, help="List of documents to index")
 

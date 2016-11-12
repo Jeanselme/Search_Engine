@@ -51,7 +51,7 @@ def group_by_key(documents):
 
 def get_matching_key(document_path):
 	"""
-		Associate a document to the key of an indexation class that can handle it
+		Associates a document to the key of an indexation class that can handle it
 	:param 	document_path: a document path to test
 	:return: 	If the document can be handled, the corresponding indexation key
 				Otherwise 'unknown'
@@ -66,7 +66,7 @@ def get_matching_key(document_path):
 
 def create_index_reader(key, document):
 	"""
-		Indexes the document and open a reader on the index file
+		Indexes the document and opens a reader on the index file
 	:param key:	should be the result of get_matching_key(document)
 	:param document: Document to index
 	:return: the corresponding reader object already initialized
@@ -81,9 +81,9 @@ def create_index_reader(key, document):
 
 def create_reverse_indexes(documents):
 	"""
-		Indexes all documents according to their type and add them to their corresponding reverse index.
-		All texts documents will be indexes through text indexation and added to the text reverse index
-		Same for all future kind of document
+		Indexes all documents according to their type and adds them to their corresponding reverse index.
+		All texts documents will be indexed through text indexation and added to the text reverse index
+		Same for all future kind of documents
 	:param documents: List of documents. Should all exist !
 	"""
 	grouped = group_by_key(documents)
