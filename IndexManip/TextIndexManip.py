@@ -24,8 +24,7 @@ class textIndexReader(abstractIndexReader):
 			self.currentValue = [line.group("word"), line.group("occurence")]
 		except Exception:
 			self.currentValue = None
-			self.ptr.close()
-
+			
 		return self.currentValue
 
 

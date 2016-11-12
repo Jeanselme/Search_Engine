@@ -55,7 +55,6 @@ class TestIndexationEngine(unittest.TestCase):
 
     def test_create_index(self):
         reader = IndexationFactory.create_index_reader('text', './Tests/Sources/Texts/test1.txt')
-        reader.ptr.close()
         assert (os.path.exists('Indexes/test1.txt.text.index'))
         os.remove('Indexes/test1.txt.text.index')
 

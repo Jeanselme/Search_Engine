@@ -38,6 +38,12 @@ class abstractIndexReader:
 		"""
 		pass
 
+	def __del__(self):
+		"""
+		Closes the pointer on the file
+		"""
+		self.ptr.close()
+
 
 class abstractIndexWriter:
 	"""
