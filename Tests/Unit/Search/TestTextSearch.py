@@ -35,7 +35,7 @@ class TestTextSearch(unittest.TestCase):
 		trir = textReverseIndexReader('ReverseIndexes/Test.reverse.index')
 		search = textSearch('potatos', trir).computeResult()
 		assert(search.query == 'potatos')
-		assert(search.res[0] == 0)
+		assert(search.res[0] == "test1.txt.text.index")
 		self.ReverseIndexDeletion()
 
 	def test_complexSearch(self):
@@ -43,7 +43,8 @@ class TestTextSearch(unittest.TestCase):
 		trir = textReverseIndexReader('ReverseIndexes/Test.reverse.index')
 		search = textSearch('potatos freedom',trir).computeResult()
 		assert(search.query == 'potatos freedom')
-		assert(search.res[0] == 1)
+		assert(search.res[0] == "test2.txt.text.index")
+		search.display()
 		self.ReverseIndexDeletion()
 
 	def test_noResult(self):

@@ -48,5 +48,6 @@ class textSearch(abstractSearchType):
 				possibleDocs += docFiles
 
 		possibleDocs = sorted(set(possibleDocs),key=possibleDocs.count, reverse=True)
+		possibleDocs = [self.reverseIndex.correspondingFile(doc) for doc in possibleDocs]
 
 		return firstTextResult(self.query, possibleDocs)

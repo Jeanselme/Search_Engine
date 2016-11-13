@@ -21,7 +21,8 @@ class abstractReverseIndexReader:
 		# Documents in order to allow correspondance
 		self.documentsNames = []
 		with open(fileName + '.info') as info:
-			self.documentsNames.append(info.readline().rstrip('\n'))
+			for line in info.readlines():
+				self.documentsNames.append(line.rstrip('\n'))
 
 	def readEntry(self):
 		"""
