@@ -11,6 +11,7 @@ import os
 import DocType.TextType as TextType
 import IndexManip.TextIndexManip as TextIndexManip
 import ReverseIndexManip.TextReverseIndexManip as TextReverseIndexManip
+import Search.TextSearch as TextSearch
 
 """
 	key: file extension
@@ -28,8 +29,10 @@ factory = {
 		'doctype': TextType.textType,
 		'reader': TextIndexManip.textIndexReader,
 		'writer': TextIndexManip.textIndexWriter,
+		'reverse_reader': TextReverseIndexManip.textReverseIndexReader,
 		'reverse_writer': TextReverseIndexManip.textReverseIndexWriter,
 		'reverse_file_path': 'text.reverse.index',
+		'search': TextSearch.textSearch
 	}
 }
 

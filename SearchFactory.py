@@ -5,17 +5,36 @@
 	vincent.jeanselme@gmail.com
 """
 
-class searchFactory:
-	"""
-	Class which associates the query to the corresponding type of data
-	with the adaptated SearchType and ReverseIndexes
-	"""
+import IndexationFactory
 
-	def __init__(self, query):
-		"""
-		Inits the search with the query
-		"""
-		# Saves the query
-		self.query = query
+# directory where all reverse indexes can be found
+directory = 'ReverseIndexes/'
 
-		# Associates the good type of data and reverseIndexes
+
+def search(document_types, query):
+	"""
+		Searches through all reverse indexes that match the documents_types
+	:param document_types: kind of document we are looking at (must mast IndexationFactory.factory keys)
+	:param query: Set of words we are looking for in the indexed documents
+	:return: array of results
+	"""
+	factory = IndexationFactory.factory
+
+	results = []
+	for doc_type in document_types:
+		fac = factory[doc_type]
+		reverse_file = directory + fac['reverse_file_path']
+		reader = fac['reverse_reader'](reverse_file)
+		search_result = fac['search'](query, reader).computeResult()
+		results.append(search_result)
+
+	return results
+
+
+def display(results):
+	"""
+	:param results: Values returned by search
+	:return: None
+	"""
+	for result in results:
+		result.display()
